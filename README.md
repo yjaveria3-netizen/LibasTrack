@@ -1,152 +1,159 @@
-# Ayesha Ahmad Atelier — Business Management Suite
+<p align="center">
+    <img src="https://capsule-render.vercel.app/api?type=waving&height=210&text=LibasTrack&fontAlign=50&fontAlignY=35&fontSize=64&animation=twinkling&desc=Fashion%20Brand%20Operations%20Platform&descAlignY=58&color=0:0f172a,35:1e293b,100:06b6d4" alt="LibasTrack banner" />
+</p>
 
-A full-stack MERN application that replaces Google Drive chaos with a beautiful, user-friendly dashboard. All data enters through your dashboard and syncs **live** to Google Sheets in your Google Drive.
+<p align="center">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=20&pause=1200&center=true&vCenter=true&width=900&lines=Manage+Products%2C+Orders%2C+Customers%2C+Financials+and+Returns;Google+OAuth+%2B+Multi-Tenant+Architecture;Live+Sync+with+Google+Sheets+and+Local+Excel" alt="Typing animation" />
+</p>
 
----
+<p align="center">
+    <img src="https://img.shields.io/badge/Stack-MERN-0ea5e9?style=for-the-badge" alt="MERN" />
+    <img src="https://img.shields.io/badge/Auth-Google%20OAuth-22c55e?style=for-the-badge" alt="Google OAuth" />
+    <img src="https://img.shields.io/badge/Sync-Google%20Sheets%20%2B%20Excel-f59e0b?style=for-the-badge" alt="Sync" />
+    <img src="https://img.shields.io/badge/UI-React%20%2B%20Framer%20Motion-a855f7?style=for-the-badge" alt="UI" />
+</p>
 
-## 🌟 Features
+## Overview
+LibasTrack is a full-stack platform for fashion brands to run end-to-end operations in one system.
 
-- **Google OAuth Login** — Sign in with Gmail, no passwords needed
-- **Google Drive Integration** — Paste your Drive folder link once; spreadsheets are created automatically
-- **Live Sync** — Every entry (product, order, customer, transaction) syncs instantly to Google Sheets
-- **Product Management** — Full CRUD with auto-generated IDs (PRD-0001)
-- **Order Management** — Track orders with status (Pending → Delivered)
-- **Customer Management** — Customer registry with date joined
-- **Financial Records** — Track payments, methods, and statuses
-- **Launch Checklist** — All 10 phases pre-loaded (Brand → Post-Launch Growth)
-- **Beautiful UI** — Luxury editorial dark theme with gold accents
+It connects:
+- product catalog and inventory
+- order pipeline and fulfillment
+- customer CRM and loyalty metrics
+- transactions and payment records
+- returns and refund workflows
+- Google Sheets or local Excel sync
 
----
+## Animated Highlights
+<p align="center">
+    <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=anuraghazra&theme=github_dark" alt="animated card" />
+</p>
 
-## 🗂️ Project Structure
+Core capabilities:
+- Google OAuth sign-in
+- multi-tenant data isolation
+- auto-generated business IDs like PRD-0001, ORD-0001, CUS-0001, TXN-0001
+- operational modules for Products, Orders, Customers, Financial, Suppliers, Returns, Checklist, Collections
+- live sync to cloud sheets and local excel files
 
+## Architecture
+```text
+LibasTrack/
+|- backend/
+|  |- models/
+|  |- routes/
+|  |- services/
+|  |- middleware/
+|  |- server.js
+|  |- setup.js
+|- frontend/
+|  |- src/
+|  |  |- pages/
+|  |  |- components/
+|  |  |- context/
+|  |  |- hooks/
+|  |  |- utils/
+|  |- public/
+|  |- package.json
+|- README.md
 ```
-ayesha-atelier/
-├── backend/          ← Express + MongoDB + Google APIs
-│   ├── models/       ← Mongoose schemas (User, Product, Order, Customer, Financial)
-│   ├── routes/       ← API routes (auth, products, orders, customers, financial, drive, checklist)
-│   ├── services/     ← Google Sheets service
-│   ├── middleware/   ← JWT auth middleware
-│   └── server.js
-└── frontend/         ← React app
-    └── src/
-        ├── pages/    ← Login, Dashboard, Products, Orders, Customers, Financial, Checklist, DriveSetup
-        ├── components/  ← Layout, Sidebar
-        ├── context/  ← AuthContext
-        └── utils/    ← Axios API client
+
+## Tech
+| Layer | Technology |
+|---|---|
+| Frontend | React 18, React Router v6, Framer Motion, SWR |
+| Backend | Node.js, Express |
+| Database | MongoDB, Mongoose |
+| Auth | Google OAuth 2.0, JWT |
+| Sync | Google Sheets API v4, Google Drive API v3, ExcelJS |
+| Security | Helmet, rate limiting, payload sanitization |
+
+## Quick Start (After Clone)
+
+### 1. Clone
+```bash
+git clone <your-repo-url>
+cd LibasTrack
 ```
 
----
-
-## 🚀 Setup Instructions
-
-### Step 1 — Google Cloud Console
-
-1. Go to [console.cloud.google.com](https://console.cloud.google.com)
-2. Create a new project (e.g. "Ayesha Atelier")
-3. Enable these APIs:
-   - **Google Drive API**
-   - **Google Sheets API**
-   - **Google+ API / People API**
-4. Go to **Credentials → Create Credentials → OAuth 2.0 Client ID**
-5. Application type: **Web application**
-6. Add authorized redirect URI: `http://localhost:5000/api/auth/google/callback`
-7. Copy your **Client ID** and **Client Secret**
-
-### Step 2 — Backend Setup
-
+### 2. Backend
 ```bash
 cd backend
 npm install
-cp .env.example .env
+node setup.js
 ```
 
-Edit `.env`:
-```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/ayesha_atelier
-JWT_SECRET=your_random_secret_key_here
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-GOOGLE_REDIRECT_URI=http://localhost:5000/api/auth/google/callback
-FRONTEND_URL=http://localhost:3000
-```
+Then open .env and set real values:
+- MONGODB_URI
+- JWT_SECRET
+- GOOGLE_CLIENT_ID
+- GOOGLE_CLIENT_SECRET
+- GOOGLE_REDIRECT_URI
+- FRONTEND_URL
 
+Run backend:
 ```bash
 npm run dev
 ```
 
-### Step 3 — Frontend Setup
-
+### 3. Frontend
 ```bash
-cd frontend
+cd ../frontend
 npm install
-cp .env.example .env
 ```
 
-Edit `.env`:
+Create .env (or copy from .env.example):
 ```env
 REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_NAME=LibasTrack
 ```
 
+Run frontend:
 ```bash
 npm start
 ```
 
-### Step 4 — First Time Use
+### 4. Open App
+- http://localhost:3000
 
-1. Open `http://localhost:3000`
-2. Click **"Continue with Google"** — sign in with the Gmail that owns your Drive
-3. You'll be redirected to **Drive Setup** page
-4. Enter your Drive name and paste the link to your **"Ayesha Ahmad Atelier"** folder
-5. Click **Connect Drive & Create Sheets** — spreadsheets are auto-created in your Drive
-6. Done! Start entering data — it syncs live ✓
-
----
-
-## 📊 Google Drive Folder Structure Expected
-
-```
-Ayesha Ahmad Atelier/    ← Paste link to this folder
-└── Database/            ← Spreadsheets auto-created here
-    ├── Products.xlsx
-    ├── Orders.xlsx
-    ├── Customer.xlsx
-    └── Financial.xlsx
+## Google Cloud Setup
+1. Create a Google Cloud project.
+2. Enable Google Drive API and Google Sheets API.
+3. Create OAuth web credentials.
+4. Add redirect URI:
+```text
+http://localhost:5000/api/auth/google/callback
 ```
 
----
+## Data Linking Across Modules
+LibasTrack links records across sheets and modules through business IDs:
+- Orders -> Customer ID
+- Financial -> Order ID, Customer ID
+- Returns -> Order ID, Customer ID, Product ID
+- Customer stats recalculate from orders
 
-## 🔧 Tech Stack
+This allows cross-sheet analysis like:
+- which customer bought which products
+- which order produced which transaction
+- which return maps to which order and product
 
-| Layer | Tech |
-|-------|------|
-| Frontend | React 18, React Router v6, Framer Motion |
-| Backend | Node.js, Express |
-| Database | MongoDB + Mongoose |
-| Auth | Google OAuth 2.0 + JWT |
-| Sheets | Google Sheets API v4 |
-| Drive | Google Drive API v3 |
-| Styling | Custom CSS (luxury dark theme) |
+## Deployment
+Backend:
+- set production env vars in your host
+- set FRONTEND_URL and GOOGLE_REDIRECT_URI to production URLs
 
----
+Frontend:
+- set REACT_APP_API_URL to backend URL
+- run build command:
+```bash
+npm run build
+```
 
-## 📦 Production Deployment
+## Security Notes
+- never commit .env files
+- commit only .env.example and template-safe setup files
+- restrict OAuth credentials and MongoDB network access
 
-**Backend (Railway / Render):**
-- Set all `.env` variables in dashboard
-- Update `GOOGLE_REDIRECT_URI` to your production URL
-- Update `FRONTEND_URL` to your frontend URL
-
-**Frontend (Vercel / Netlify):**
-- Set `REACT_APP_API_URL` to your backend URL
-- Build: `npm run build`
-
----
-
-## 💡 Notes
-
-- MongoDB must be running locally (`mongod`) or use MongoDB Atlas
-- Google API credentials must have Drive + Sheets scopes
-- The `Database` subfolder is searched for automatically; if not found, sheets go to the root folder
-- All IDs are auto-generated: `PRD-0001`, `ORD-0001`, `CUS-0001`, `TXN-0001`
+<p align="center">
+    <img src="https://capsule-render.vercel.app/api?type=waving&section=footer&height=120&color=0:06b6d4,100:0f172a" alt="footer" />
+</p>
