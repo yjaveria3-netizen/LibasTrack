@@ -1,18 +1,9 @@
-# Git Submodules Configuration for LibasTrack
-# This file configures backend and frontend as separate submodules
-# 
-# To use this setup:
-# 1. Create separate GitHub repositories for backend and frontend
-# 2. Uncomment the submodule sections below
-# 3. Run: git submodule init
-# 4. Run: git submodule update --recursive --remote
-
 [submodule "backend"]
- 	path = backend
- 	url = https://github.com/yjaveria3-netizen/LibasTrack-Backend.git
- 	branch = main
+	path = backend
+	url = https://github.com/yjaveria3-netizen/LibasTrack-Backend.git
+	branch = main
 
- [submodule "frontend"]
- 	path = frontend
- 	url = https://github.com/yjaveria3-netizen/LibasTrack-Frontend.git
- 	branch = main
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/yjaveria3-netizen/LibasTrack-Frontend.git
+	branch = main
